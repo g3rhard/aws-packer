@@ -65,7 +65,7 @@ build {
 
   provisioner "shell" {
     pause_before = "4s"
-    scripts      = ["./provision/userdata/base.sh"]
+    scripts      = ["./provision/base.sh"]
   }
 
 }
