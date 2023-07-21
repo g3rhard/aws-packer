@@ -24,17 +24,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
-      - name: slack-send
-        # You may pin to the exact commit or the version.
-        # uses: slackapi/slack-github-action@d5d276d7ae0f38f29322b80da9baf985cc80f8b1
-        uses: slackapi/slack-github-action@v1.15.0
+
+      - name: Send Discord notification
+        uses: sarisia/actions-status-discord@v1
+        if: always()
         with:
-          # Slack channel ID where message will be posted. Needed if using bot token
-          channel-id: ${{ secrets.SLACK_CHANNEL_ID }} # optional
-          # Message to post into Slack. Needed if using bot token
-          # slack-message: # optional
-          # JSON payload to send to Slack if webhook route. If not supplied, json from GitHub event will be sent instead
-          # payload: # optional
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          title: "${{ github.repository }}: ${{ github.workflow }}"
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
