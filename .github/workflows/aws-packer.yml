@@ -24,10 +24,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
 
       - name: Send Discord notification
-        uses: sarisia/actions-status-discord@v1
+        uses: sarisia/actions-status-discord@ce8cc68e4e626000136b3c702d049a154243e490 # v1
         if: always()
         with:
           title: "${{ github.repository }}: ${{ github.workflow }}"
